@@ -24,8 +24,8 @@ public class Class {
     @Column(unique = true)
     private String name;
     private String description;
-    private Integer hours_duration;
-    private Integer age_limit;
+    private Integer hoursDuration;
+    private Integer ageLimit;
     private ELevel level;
 
     @ManyToMany
