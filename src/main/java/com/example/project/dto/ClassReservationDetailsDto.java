@@ -1,5 +1,6 @@
 package com.example.project.dto;
 
+import com.example.project.enums.EDayOfWeek;
 import com.example.project.validators.OnlyAlphaNumericValidator;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
@@ -15,31 +16,24 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ClassReservationDetailsDto {
-    @NotBlank(message = "class name can't be blank!")
+    @NotBlank(message = "class name must be defined")
     private String className;
 
-    @NotBlank(message = "studio name must contain at least one letter or digit!")
+    @NotBlank(message = "studio name must be defined, in alphanumeric")
     @OnlyAlphaNumericValidator
     private String studioName;
 
-    @NotNull(message = "The date must be provided!")
-    @FutureOrPresent(message = "You can't select a past date")
-    private LocalDate classDate;
+    @NotNull(message = "The day of week must be provided")
+    private EDayOfWeek dayOfWeek;
 
-    @NotNull(message = "The hour must be provided!")
-    private LocalTime classHour;
+    @NotNull(message = "Start time must be defined")
+    private LocalTime startTime;
 
-    @NotNull(message = "Purchase date must be provided!")
-    private LocalDate purchaseDate;
+    @NotNull(message = "Price must be defined")
+    @Min(value = 1, message = "Price cannot be negative!")
+    private Integer price;
 
-    @NotNull(message = "Purchase time must be provided!")
-    private LocalTime purchaseTime;
-
-    @NotNull(message = "Total price must be provided!")
-    @Min(value = 1, message = "Price can't be negative!")
-    private Integer totalPrice;
-
-    @NotNull(message = "Tickets must be provided!")
-    @Size(min = 1, message = "There should be at least one ticket!")
+    @NotNull(message = "Tickets must be defined")
+    @Size(min = 1, message = "At least one reservation ticket must exist")
     private List<ReservationTicketDto> tickets;
 }

@@ -12,11 +12,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReservationTicketDto {
-    @NotNull(message = "The row must be provided!")
-    @Min(value = 1, message = "Row number must be positive!")
-    private Integer row;
+    @NotNull(message = "The price must be defined")
+    @Min(value = 1, message = "Price cannot be negative")
+    private Long finalPrice;
 
-    @NotNull(message = "The seat must be provided!")
-    @Min(value = 1, message = "Seat number must be positive!")
-    private Integer seat;
+
 }

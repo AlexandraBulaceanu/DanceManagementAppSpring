@@ -21,8 +21,8 @@ public class ClassReservationMapper {
         return ClassReservationDetailsDto.builder()
                 .className(classReservation.getReservationTickets().get(0).getClassSchedule().getClass().getName())
                 .studioName(classReservation.getReservationTickets().get(0).getClassSchedule().getStudio().getName())
-                .classHour(classReservation.getReservationTickets().get(0).getClassSchedule().getId().getStartTime())
-                .totalPrice(classReservation.getPrice())
+                .startTime(classReservation.getReservationTickets().get(0).getClassSchedule().getId().getStartTime())
+                .price(classReservation.getPrice())
                 .tickets(classReservation.getReservationTickets().stream().map(reservationTicketMapper::mapToReservationTicketDto).collect(Collectors.toList()))
                 .build();
     }
