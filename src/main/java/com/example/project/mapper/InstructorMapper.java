@@ -1,6 +1,8 @@
 package com.example.project.mapper;
 
 
+import com.example.project.dto.InstructorDetailsDto;
+import com.example.project.dto.InstructorDto;
 import com.example.project.entity.Instructor;
 import org.springframework.stereotype.Component;
 
@@ -21,7 +23,7 @@ public class InstructorMapper {
 
     public InstructorDetailsDto mapToInstructorDetailsDto(Instructor instructor) {
         return InstructorDetailsDto.builder()
-                .instructor_id(instructor.getInstructor_id())
+                .id(instructor.getInstructor_id())
                 .name(instructor.getName())
                 .build();
     }

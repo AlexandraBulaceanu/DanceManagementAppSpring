@@ -1,8 +1,11 @@
 package com.example.project.mapper;
 
+import com.example.project.dto.ClassReservationDetailsDto;
 import com.example.project.entity.ClassReservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.stream.Collectors;
 
 @Component
 public class ClassReservationMapper {
@@ -16,12 +19,11 @@ public class ClassReservationMapper {
 
     public ClassReservationDetailsDto mapToClassReservationDetailsDto(ClassReservation classReservation) {
         return ClassReservationDetailsDto.builder()
-                .movieName(classReservation.getReservationTickets().get(0).getClassSchedule().getClass().getName())
-                .roomName(classReservation.getReservationTickets().get(0).getClassSchedule().getStudio().getName())
-                .movieDate(classReservation.getReservationTickets().get(0).getClassSchedule().getId().getDayOfWeek())
-                .movieHour(classReservation.getReservationTickets().get(0).getClassSchedule().getId().getStartTime())
+                .className(classReservation.getReservationTickets().get(0).getClassSchedule().getClass().getName())
+                .studioName(classReservation.getReservationTickets().get(0).getClassSchedule().getStudio().getName())
+                .classHour(classReservation.getReservationTickets().get(0).getClassSchedule().getId().getStartTime())
                 .totalPrice(classReservation.getPrice())
-                .tickets(classReservation.getReservationTickets().stream().map(ticketMapper::mapToTicketDto).toList())
+                .tickets(classReservation.getReservationTickets().stream().map(reservationTicketMapper::mapToReservationTicketDto).collect(Collectors.toList()))
                 .build();
     }
 }

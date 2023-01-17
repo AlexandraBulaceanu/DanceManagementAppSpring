@@ -1,5 +1,7 @@
 package com.example.project.mapper;
 
+import com.example.project.dto.StudioDetailsDto;
+import com.example.project.dto.StudioDto;
 import com.example.project.entity.Studio;
 import org.springframework.stereotype.Component;
 
@@ -16,14 +18,13 @@ public class StudioMapper {
     public Studio mapToStudio(StudioDto studioDto) {
         return Studio.builder()
                 .name(studioDto.getName())
-                .numberOfRows(studioDto.getNumberOfRows())
-                .seatsPerRow(studioDto.getSeatsPerRow())
+                .capacity(studioDto.getCapacity())
                 .build();
     }
 
     public StudioDetailsDto mapToStudioDetailsDto(Studio studio) {
         return StudioDetailsDto.builder()
-                .studio_id(studio.getStudio_id())
+                .id(studio.getStudio_id())
                 .name(studio.getName())
                 .capacity(studio.getCapacity())
                 .build();
