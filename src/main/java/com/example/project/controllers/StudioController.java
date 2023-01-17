@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/studios")
 @Tag(name = "Studios management", description = "Manage studios from database")
 public class StudioController {
     private final StudioServiceImpl studioService;

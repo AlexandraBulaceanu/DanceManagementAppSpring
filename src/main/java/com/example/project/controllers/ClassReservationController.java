@@ -28,7 +28,7 @@ public class ClassReservationController {
     }
 
     @PostMapping
-    @Operation(summary = "Add an classReservation", description = "ClassReservation for a class")
+    @Operation(summary = "Add a classReservation", description = "ClassReservation for a class")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successfully add the class reservation"),
             @ApiResponse(responseCode = "400", description = "The class is not scheduled at requested day of week and time"),

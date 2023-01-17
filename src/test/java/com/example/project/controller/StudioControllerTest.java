@@ -69,8 +69,7 @@ public class StudioControllerTest {
                 .content(studioDtoBody).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name").value(StudioDto.getName()))
-                .andExpect(jsonPath("$.numberOfRows").value(12))
-                .andExpect(jsonPath("$.seatsPerRow").value(10))
+                .andExpect(jsonPath("$.capacity").value(40))
                 .andReturn();
         assertEquals(result.getResponse().getContentAsString(), studioDtoBody);
     }
@@ -97,8 +96,7 @@ public class StudioControllerTest {
                 .content(studioDtoBody).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name").value(studioDto.getName()))
-                .andExpect(jsonPath("$.numberOfRows").value(12))
-                .andExpect(jsonPath("$.seatsPerRow").value(10))
+                .andExpect(jsonPath("$.capacity").value(40))
                 .andReturn();
         assertEquals(result.getResponse().getContentAsString(), studioDtoBody);
     }

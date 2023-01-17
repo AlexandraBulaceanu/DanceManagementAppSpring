@@ -45,7 +45,7 @@ public class StudentServiceImpl implements StudentService, CommonService<Student
         searchParam = searchParam.toLowerCase();
         List<Student> students = studentRepository.searchByName(searchParam);
         if(students.isEmpty()) {
-            throw new NoEntityFoundException(String.format(Constants.NO_ENTITY_FOUND, searchParam));
+            throw new NoEntityFoundException(Constants.NO_ENTITY_FOUND);
         }
         return students.stream().map(studentMapper::mapToStudentDto).collect(Collectors.toList());
     }

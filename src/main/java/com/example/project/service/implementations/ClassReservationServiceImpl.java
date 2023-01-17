@@ -55,17 +55,17 @@ public class ClassReservationServiceImpl implements CommonService<ClassReservati
     public ClassReservationDetailsDto add(ClassReservationDto classReservationDto) {
         Optional<Student> optionalStudent = studentRepository.findByEmail(classReservationDto.getStudentEmail());
         if(!optionalStudent.isPresent()) {
-            throw new NoEntityFoundException(String.format(Constants.NO_ENTITY_FOUND, "Student", "email", classReservationDto.getStudentEmail()));
+            throw new NoEntityFoundException(Constants.NO_ENTITY_FOUND + " Student " + classReservationDto.getStudentEmail());
         }
 
         Optional<Class> optionalClass = classRepository.findByName(classReservationDto.getClassName());
         if(!optionalClass.isPresent()) {
-            throw new NoEntityFoundException(String.format(Constants.NO_ENTITY_FOUND, "Class", "name", classReservationDto.getClassName()));
+            throw new NoEntityFoundException(Constants.NO_ENTITY_FOUND + " Class " + classReservationDto.getClassName());
         }
 
         Optional<Studio> optionalStudio = studioRepository.findByName(classReservationDto.getStudioName());
         if(!optionalStudio.isPresent()) {
-            throw new NoEntityFoundException(String.format(Constants.NO_ENTITY_FOUND, "Studio", "name", classReservationDto.getStudioName()));
+            throw new NoEntityFoundException(Constants.NO_ENTITY_FOUND + "Studio" + " name " + classReservationDto.getStudioName());
         }
 
         Class cls = optionalClass.get();
@@ -78,7 +78,7 @@ public class ClassReservationServiceImpl implements CommonService<ClassReservati
                 .build();
         Optional<ClassSchedule> optionalClassSchedule = classScheduleRepository.findById(classScheduleId);
         if(!optionalClassSchedule.isPresent()) {
-            throw new BadRequestException(Constants.NO_ENTITY_FOUND);
+            throw new BadRequestException(Constants.NO_ENTITY_FOUND + "no class");
         }
 
         ClassSchedule classSchedule = optionalClassSchedule.get();

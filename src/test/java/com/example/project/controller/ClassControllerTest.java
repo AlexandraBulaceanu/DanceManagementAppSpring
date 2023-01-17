@@ -116,7 +116,7 @@ public class ClassControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.className").value(classScheduleDto.getClassName()))
                 .andExpect(jsonPath("$.studioName").value(classScheduleDto.getStudioName()))
-                .andExpect(jsonPath("$.dayOfWay").value(classScheduleDto.getDayOfWeek().toString()))
+                .andExpect(jsonPath("$.dayOfWeek").value(classScheduleDto.getDayOfWeek().toString()))
                 .andExpect(jsonPath("$.startTime").value(classScheduleDto.getStartTime().toString()))
                 .andExpect(jsonPath("$.price").value(classScheduleDto.getPrice()))
                 .andReturn();
